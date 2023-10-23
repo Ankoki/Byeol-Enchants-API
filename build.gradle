@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ankoki'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'papermc'
+        url 'https://repo.papermc.io/repository/maven-public/'
+        content {
+            includeModule("io.papermc.paper", "paper-api")
+            includeModule("io.papermc", "paperlib")
+            includeModule("net.md-5", "bungeecord-chat")
+        }
+    }
+    maven { url 'https://repo.codemc.io/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.20.2-R0.1-SNAPSHOT'
+    compileOnly 'de.tr7zw:item-nbt-api-plugin:2.12.0'
+}

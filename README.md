@@ -47,6 +47,7 @@ You only need to extend `com.ankoki.byeolenchants.api.enchants.CustomEnchant`, a
 package com.ankoki.benchants;
 
 import com.ankoki.byeolenchants.api.enchants.CustomEnchant;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -67,7 +68,7 @@ public class InformationEnchant extends CustomEnchant {
         event.setCancelled(true);
         Player player = event.getPlayer();
         Block block = event.getBlock();
-        Material type = event.getType();
+        Material type = block.getType();
         player.sendMessage("§e§l৺ §7Block Information:");
         player.sendMessage("§e§l | Type: " + type);
         if (level >= 2)

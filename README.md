@@ -54,33 +54,33 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.jetbrains.annotations.NotNull;
 
-public class InformationEnchant extends CustomEnchant {
+public class Information extends CustomEnchant {
 
-    public InformationEnchant() {
-        // Call to super using the name of the enchant, and the version.
-        // The version is mainly useless, however it is a safety net for if you have registered the same enchant twice.
-        super("Information", "1.0");
-        // The call to super has registered the enchant for you, no need to do anything else!
-    }
+	public Information() {
+		// Call to super using the name of the enchant, and the version.
+		// The version is mainly useless, however it is a safety net for if you have registered the same enchant twice.
+		super("Information", "1.0");
+		// The call to super has registered the enchant for you, no need to do anything else!
+	}
 
-    @Override
-    public void onBlockBreak(BlockBreakEvent event, int level) {
-        assert level >= 1; // This only gets called if the player's tool has the enchant, no need to check yourself! No need to assert, this is just for demonstration.
-        event.setCancelled(true);
-        Player player = event.getPlayer();
-        Block block = event.getBlock();
-        Material type = block.getType();
-        player.sendMessage("§e§l৺ §7Block Information:");
-        player.sendMessage("§e§l | Type: " + type);
-        if (level >= 2)
-            player.sendMessage("§e§l | Location: " + this.format(block.getLocation()));
-        if (level >= 3)
-            player.sendMessage("§e§l | Light Level: " + block.getLightLevel());
-    }
+	@Override
+	public void onBlockBreak(BlockBreakEvent event, int level) {
+		assert level >= 1; // This only gets called if the player's tool has the enchant, no need to check yourself! No need to assert, this is just for demonstration.
+		event.setCancelled(true);
+		Player player = event.getPlayer();
+		Block block = event.getBlock();
+		Material type = event.getBlock().getType();
+		player.sendMessage("§e§l৺ §7Block Information:");
+		player.sendMessage("§e§l | §7Type: " + type);
+		if (level >= 2)
+			player.sendMessage("§e§l | §7Location: " + this.format(block.getLocation()));
+		if (level >= 3)
+			player.sendMessage("§e§l | §7Light Level: " + block.getLightLevel());
+	}
 
-    private String format(@NotNull Location location) {
-        return location.getX() + ", " + location.getY() + ", " + location.getZ() + ", " + location.getWorld().getName();
-    }
+	private String format(@NotNull Location location) {
+		return location.getX() + ", " + location.getY() + ", " + location.getZ() + ", " + location.getWorld().getName();
+	}
 
 }
 ```

@@ -114,9 +114,17 @@ public List<Material> getAllowedMaterials();
 The materials that aren't allowed to be enchanted.  
 ```java
 public List<Material> getDisallowedMaterials();
-```
+```  
 Names of worlds this enchant cannot be used in.  
 ```java
 public List<String> getBlockedWorlds();
+```
+Names of enchants that cannot be used with this enchant.  
+```java
+public List<String> getConflictingEnchants();
+```
+Whether the enchant is enabled or not.  
+```java
+public boolean isEnabled();
 ```
 There are more methods provided, however we recommend you don't override them as they use unaccessible classes.  

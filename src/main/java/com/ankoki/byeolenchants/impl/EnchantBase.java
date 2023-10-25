@@ -18,6 +18,15 @@ public abstract class EnchantBase {
 	public EnchantBase(String name, String version) {}
 
 	/**
+	 * Creates a new custom enchant with the given name and version.
+	 *
+	 * @param name    the name of the enchant.
+	 * @param version the version.
+	 * @param config  whether to create the config ourselves or not. If this is true you must call <code>super.reloadConfig();</code> after.
+	 */
+	public EnchantBase(String name, String version, boolean config) {}
+
+	/**
 	 * Gets the name of this enchant.
 	 *
 	 * @return the name.
@@ -152,5 +161,13 @@ public abstract class EnchantBase {
 	public int getLevel(ItemStack item) {
 		return 0;
 	}
+
+	/**
+	 * Validates the compiled keys against the ones that are already stored.
+	 * If any keys have been removed or added locally, they will be removed or added to the stored.
+	 *
+	 * @return true if any changes have been made.
+	 */
+	private boolean validateKeys() {}
 
 }

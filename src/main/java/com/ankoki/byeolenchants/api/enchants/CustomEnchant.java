@@ -15,7 +15,18 @@ public abstract class CustomEnchant extends EnchantBase {
 	 * @param version the version.
 	 */
 	public CustomEnchant(String name, String version) {
-		super(name, version);
+		super(name, version, true);
+	}
+
+	/**
+	 * Creates a new custom enchant with the given name and version.
+	 *
+	 * @param name    the name of the enchant.
+	 * @param version the version.
+	 * @param config  whether to create the config ourselves or not.
+	 */
+	public CustomEnchant(String name, String version, boolean config) {
+		super(name, version, config);
 	}
 
 	/**

@@ -1,9 +1,12 @@
 package com.ankoki.byeolenchants.impl;
 
+import com.ankoki.byeolenchants.ByeolEnchants;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -32,7 +35,7 @@ public abstract class EnchantBase {
 	 * @return the name.
 	 */
 	public String getName() {
-		return "";
+		return null;
 	}
 
 	/**
@@ -41,7 +44,7 @@ public abstract class EnchantBase {
 	 * @return the version.
 	 */
 	public String getVersion() {
-		return "";
+		return null;
 	}
 
 	/**
@@ -50,7 +53,7 @@ public abstract class EnchantBase {
 	 * @return the starting cost.
 	 */
 	public double getStartingCost() {
-		return 0.0D;
+		return 0;
 	}
 
 	/**
@@ -99,6 +102,24 @@ public abstract class EnchantBase {
 	}
 
 	/**
+	 * Gets the names of enchants that cannot be on the same item as this enchant.
+	 *
+	 * @return the conflicting enchants.
+	 */
+	public List<String> getConflictingEnchants() {
+		return null;
+	}
+
+	/**
+	 * Checks if this enchant is enabled.
+	 *
+	 * @return true if enabled.
+	 */
+	public boolean isEnabled() {
+		return false;
+	}
+
+	/**
 	 * Initiates the configuration.
 	 */
 	private void reloadConfig() {}
@@ -107,7 +128,8 @@ public abstract class EnchantBase {
 	 * Loads the configuration of this enchant/
 	 * This will be found in /plugins/Byeol-Enchants/enchants/$name.yml
 	 * Please note all spaces will be removed for the name of the yml.
-	 * If you would like to add your own configuration options, you will need to create the file before we do, containing all the necessary default options.
+	 * If you would like to add your own configuration options, you will need to create the file before we do,
+	 * containing all the necessary default options. If you do this, provide false to the constructor.
 	 * If you do override this method, please call <code>super.loadConfig()</code> as well, so we can get the default options.
 	 */
 	public void loadConfig() {}
@@ -139,7 +161,43 @@ public abstract class EnchantBase {
 	 * @return the modified ItemStack.
 	 */
 	public ItemStack enchant(ItemStack item, int level) {
-		return null;
+		return item;
+	}
+
+	/**
+	 * Gets an enchantment book containing this enchant with the given level.
+	 * Can be used in anvils.
+	 *
+	 * @param level the level to add.
+	 * @return the enchant book.
+	 */
+	@NotNull
+	public ItemStack getEnchantBook(int level) {
+		return this.getEnchantBook(null, level);
+	}
+
+	/**
+	 * Gets an enchantment book containing this enchant with the given level.
+	 * If you want to add the enchant to a book with existing enchants, pass it in the starting book.
+	 * Can be used in anvils.
+	 *
+	 * @param start the starting enchant book.
+	 * @param level the level to add.
+	 * @return the enchant book, or if the start item is not an enchant book, it will return that item.
+	 */
+	@NotNull
+	public ItemStack getEnchantBook(@Nullable ItemStack start, int level) {
+		return start;
+	}
+
+	/**
+	 * Whether an item has this enchant or not.
+	 *
+	 * @param item the item to check.
+	 * @return true if so.
+	 */
+	public boolean hasEnchant(@NotNull ItemStack item) {
+		return false;
 	}
 
 	/**
@@ -149,7 +207,7 @@ public abstract class EnchantBase {
 	 * @return the total level of the enchantment across pieces, or 0 if none found.
 	 */
 	public int getLevel(Player player) {
-		return 0;
+		return 1;
 	}
 
 	/**
@@ -158,18 +216,8 @@ public abstract class EnchantBase {
 	 * @param item the item to check on.
 	 * @return the level of this enchant.
 	 */
-	public int getLevel(ItemStack item) {
+	public int getLevel(@NotNull ItemStack item) {
 		return 0;
-	}
-
-	/**
-	 * Validates the compiled keys against the ones that are already stored.
-	 * If any keys have been removed or added locally, they will be removed or added to the stored.
-	 *
-	 * @return true if any changes have been made.
-	 */
-	private boolean validateKeys() {
-		return false;
 	}
 
 }

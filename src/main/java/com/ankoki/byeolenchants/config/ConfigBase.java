@@ -1,43 +1,45 @@
-package com.ankoki.byeolenchants.impl;
+package com.ankoki.byeolenchants.config;
 
-import com.ankoki.byeolenchants.ByeolEnchants;
-import com.ankoki.byeolenchants.api.enchants.CustomEnchant;
-import com.ankoki.byeolenchants.misc.DummyEnchant;
-import com.ankoki.byeolenchants.misc.Misc;
-import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+import java.io.File;
 
-public abstract class EnchantBase {
+/**
+ * The base for loading and reading a YamlConfiguration.
+ * This will handle creating, reloading, saving, and validating keys against the local resources.
+ */
+public abstract class ConfigBase {
 
 	/**
-	 * Creates a new custom enchant with the given name and version.
+	 * Creates a new configuration base.
+	 * This will automatically copy the default resource matching the parameter name, and call
+	 * the {@link ConfigBase#loadFile()} method.
 	 *
-	 * @param name    the name of the enchant.
-	 * @param version the version.
+	 * @param name the file name in resources, including the file extension.
+	 * @param plugin the plugin which owns this configuration.
 	 */
-	public EnchantBase(String name, String version) {
-		this.name = name;
-		this.version = version;
-		this.reloadConfig();
+	public ConfigBase(@NotNull String name, @NotNull Plugin plugin) {}
+
+	/**
+	 * This method will reload the configuration files.
+	 */
+	public void reload() {}
+
+	/**
+	 * Validates the compiled keys against the ones that are already stored.
+	 * If any keys have been removed or added locally, they will be removed or added to the stored.
+	 *
+	 * @return true if any changes have been made.
+	 */
+	public boolean validateKeys() {
+		return false;
 	}
 
 	/**
-	 * Creates a new custom enchant with the given name and version.
-	 *
-	 * @param name    the name of the enchant.
-	 * @param version the version.
-	 * @param config  whether to create the config ourselves or not. If this is true you must call <code>super.reloadConfig();</code> after.
-	 */
-	public EnchantBase(String name, String version, boolean config) {}
-
-	/**
-	 * Gets the name of this enchant.
+	 * Gets the name of this configuration.
 	 *
 	 * @return the name.
 	 */
@@ -46,185 +48,59 @@ public abstract class EnchantBase {
 	}
 
 	/**
-	 * Gets the version of this enchantment.
+	 * Gets the owning plugin of this config.
 	 *
-	 * @return the version.
+	 * @return the plugin.
 	 */
-	public String getVersion() {
+	@NotNull
+	public Plugin getPlugin() {
 		return null;
 	}
 
 	/**
-	 * Gets the starting cost of this enchantment (0 - 1).
+	 * Gets the config object linked to this base.
 	 *
-	 * @return the starting cost.
+	 * @return the file configuration.
 	 */
-	public double getStartingCost() {
-		return 0;
-	}
-
-	/**
-	 * Gets the max level of this enchant.
-	 *
-	 * @return the max level of this enchant.
-	 */
-	public int getMaxLevel() {
-		return 0;
-	}
-
-	/**
-	 * Whether this enchant uses allowed-materials or disallowed-enchants.
-	 *
-	 * @return true if allowed-enchants.
-	 */
-	public boolean useAllowed() {
-		return false;
-	}
-
-	/**
-	 * Gets the allowed materials this enchantment can go on.
-	 *
-	 * @return the allowed enchants.
-	 */
-	public List<Material> getAllowedMaterials() {
-		return null;
-	}
-
-	/**
-	 * Gets the disallowed materials this enchantment can go on.
-	 *
-	 * @return the disallowed enchants.
-	 */
-	public List<Material> getDisallowedMaterials() {
-		return null;
-	}
-
-	/**
-	 * Gets a list containing the name of worlds this enchant will not be triggered in.
-	 *
-	 * @return a list of the worlds.
-	 */
-	public List<String> getBlockedWorlds() {
-		return null;
-	}
-
-	/**
-	 * Gets the names of enchants that cannot be on the same item as this enchant.
-	 *
-	 * @return the conflicting enchants.
-	 */
-	public List<String> getConflictingEnchants() {
-		return null;
-	}
-
-	/**
-	 * Checks if this enchant is enabled.
-	 *
-	 * @return true if enabled.
-	 */
-	public boolean isEnabled() {
-		return false;
-	}
-
-	/**
-	 * Initiates the configuration.
-	 */
-	private void reloadConfig() {}
-
-	/**
-	 * Loads the configuration of this enchant/
-	 * This will be found in /plugins/Byeol-Enchants/enchants/$name.yml
-	 * Please note all spaces will be removed for the name of the yml.
-	 * If you would like to add your own configuration options, you will need to create the file before we do,
-	 * containing all the necessary default options. If you do this, provide false to the constructor.
-	 * If you do override this method, please call <code>super.loadConfig()</code> as well, so we can get the default options.
-	 */
-	public void loadConfig() {}
-
-	/**
-	 * Gets the configuration object of this enchant.
-	 *
-	 * @return the config.
-	 */
+	@NotNull
 	public FileConfiguration getConfig() {
 		return null;
 	}
 
 	/**
-	 * Checks if we can enchant the given item with this enchant.
+	 * Gets the file where this configuration is stored.
 	 *
-	 * @param item the item to check.
-	 * @return true if enchantable.
+	 * @return the file.
 	 */
-	public boolean canEnchant(ItemStack item) {
+	@NotNull
+	public File getFile() {
+		return null;
+	}
+
+	/**
+	 * Saves the current configuration to the file.
+	 * This will not throw an exception if one is caught.
+	 * To control this, see {@link ConfigBase#saveConfig(boolean)}.
+	 *
+	 * @return whether the saving was successful or not.
+	 */
+	public boolean saveConfig() {
 		return false;
 	}
 
 	/**
-	 * Enchants the item with this enchant and the given level.
+	 * Saves the current configuration to the file.
 	 *
-	 * @param item  the item to enchant.
-	 * @param level the level.
-	 * @return the modified ItemStack.
+	 * @param throwException whether to print the exception (if thrown) or not.
+	 * @return true if no exceptions were thrown.
 	 */
-	public ItemStack enchant(ItemStack item, int level) {
-		return item;
-	}
-
-	/**
-	 * Gets an enchantment book containing this enchant with the given level.
-	 * Can be used in anvils.
-	 *
-	 * @param level the level to add.
-	 * @return the enchant book.
-	 */
-	@NotNull
-	public ItemStack getEnchantBook(int level) {
-		return this.getEnchantBook(null, level);
-	}
-
-	/**
-	 * Gets an enchantment book containing this enchant with the given level.
-	 * If you want to add the enchant to a book with existing enchants, pass it in the starting book.
-	 * Can be used in anvils.
-	 *
-	 * @param start the starting enchant book.
-	 * @param level the level to add.
-	 * @return the enchant book, or if the start item is not an enchant book, it will return that item.
-	 */
-	@NotNull
-	public ItemStack getEnchantBook(@Nullable ItemStack start, int level) {
-		return start;
-	}
-
-	/**
-	 * Whether an item has this enchant or not.
-	 *
-	 * @param item the item to check.
-	 * @return true if so.
-	 */
-	public boolean hasEnchant(@NotNull ItemStack item) {
+	public boolean saveConfig(boolean throwException) {
 		return false;
 	}
 
 	/**
-	 * Gets the level of this enchantment across the player's current tool and armour.
-	 *
-	 * @param player the player.
-	 * @return the total level of the enchantment across pieces, or 0 if none found.
+	 * Loads all the values in your configuration file.
 	 */
-	public int getLevel(Player player) {
-		return 1;
-	}
-
-	/**
-	 * Gets the level of an enchantment on an item.
-	 *
-	 * @param item the item to check on.
-	 * @return the level of this enchant.
-	 */
-	public int getLevel(@NotNull ItemStack item) {
-		return 0;
-	}
+	public abstract void loadFile();
 
 }

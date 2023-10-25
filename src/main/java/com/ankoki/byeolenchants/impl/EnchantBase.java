@@ -168,6 +168,8 @@ public abstract class EnchantBase {
 	 *
 	 * @return true if any changes have been made.
 	 */
-	private boolean validateKeys() {}
+	private boolean validateKeys() {
+		return false;
+	}
 
 }

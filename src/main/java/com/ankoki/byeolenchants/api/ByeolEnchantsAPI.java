@@ -72,6 +72,17 @@ public abstract class ByeolEnchantsAPI {
 	public abstract CustomEnchant[] getEnchants();
 
 	/**
+	 * Combines the enchants of two items.
+	 * This is primarily based on an anvil, so if the result is not allowed, this will return null.
+	 *
+	 * @param first the first item.
+	 * @param second the second item.
+	 * @return the item.
+	 */
+	@Nullable
+	public abstract ItemStack combine(ItemStack first, ItemStack second);
+
+	/**
 	 * Gets the currency handler of the plugin.
 	 *
 	 * @return the currency handler.

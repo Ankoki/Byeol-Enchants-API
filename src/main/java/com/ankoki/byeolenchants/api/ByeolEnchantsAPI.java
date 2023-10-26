@@ -90,8 +90,10 @@ public abstract class ByeolEnchantsAPI {
 	/**
 	 * Wipes the current API instance of enchants.
 	 * Used for reloading.
+	 *
+	 * @param command true if ran by a command. This is used so we don't wipe skript registered enchants.
 	 */
-	public abstract void wipe();
+	public abstract void wipe(boolean command);
 
 	/**
 	 * The responses for enchantment registration.

@@ -48,6 +48,16 @@ public abstract class EnchantBase {
 	}
 
 	/**
+	 * Gets a description of this enchant.
+	 *
+	 * @return the description.
+	 */
+	@Nullable
+	public String getDescription() {
+		return null;
+	}
+
+	/**
 	 * Gets the starting cost of this enchantment (0 - 1).
 	 *
 	 * @return the starting cost.

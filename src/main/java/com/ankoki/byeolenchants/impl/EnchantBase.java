@@ -242,6 +242,6 @@ public abstract class EnchantBase {
 	 * Ran when an enchant is being unloaded.
 	 * Good for unregistering listeners if they have been.
 	 */
-	public abstract void onUnload();
+	public void onUnload() {}
 
 }

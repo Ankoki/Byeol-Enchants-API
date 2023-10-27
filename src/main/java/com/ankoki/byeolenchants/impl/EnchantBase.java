@@ -131,8 +131,9 @@ public abstract class EnchantBase {
 
 	/**
 	 * Initiates the configuration.
+	 * This should be overriden if you're creating the config file yourself, and it should be done here.
 	 */
-	private void reloadConfig() {}
+	public void reloadConfig() {}
 
 	/**
 	 * Loads the configuration of this enchant/
@@ -152,6 +153,13 @@ public abstract class EnchantBase {
 	public FileConfiguration getConfig() {
 		return null;
 	}
+
+	/**
+	 * Sets the current config, this should be used if you're reloading the config yourself.
+	 *
+	 * @param config the new configuration.
+	 */
+	public void setConfig(FileConfiguration config) {}
 
 	/**
 	 * Checks if we can enchant the given item with this enchant.

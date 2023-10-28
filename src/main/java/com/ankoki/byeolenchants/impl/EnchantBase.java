@@ -239,6 +239,16 @@ public abstract class EnchantBase {
 	}
 
 	/**
+	 * Gets the level of an enchantment on an array of items.
+	 *
+	 * @param items the items to check on.
+	 * @return the level of this enchant across the items.
+	 */
+	public int getLevel(ItemStack[] items) {
+		return 0;
+	}
+
+	/**
 	 * Ran when an enchant is being unloaded.
 	 * Good for unregistering listeners if they have been.
 	 */

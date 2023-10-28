@@ -42,11 +42,37 @@ public abstract class CustomEnchant extends EnchantBase {
 	}
 
 	/**
-	 * Called when a block is broken with a tool/armour with a level greater than 0.
+	 * Called when a block is broken with a tool/armour equipped with a level greater than 0.
 	 *
 	 * @param event the block break event.
 	 * @param level the level of the enchantment for the player in the event.
 	 */
-	public abstract void onBlockBreak(BlockBreakEvent event, int level);
+	public void onBlockBreak(BlockBreakEvent event, int level) {}
+
+	/**
+	 * Called when an entity is hurt with armour equipped with a level greater than 0.
+	 *
+	 * @param event the entity damage event.
+	 * @param level the level of the enchantment for the entity in the event.
+	 */
+	public void onEntityDamage(EntityDamageEvent event, int level) {}
+
+	/**
+	 * Called when an entity is hurt with a tool/armour equipped with a level greater than 0.
+	 * This method is called when the attacker has armour or tool.
+	 *
+	 * @param event the entity damage by entity event.
+	 * @param level the level of the enchantment for the entity in the event.
+	 */
+	public void onEntityDamageByEntityAttacker(EntityDamageByEntityEvent event, int level) {}
+
+	/**
+	 * Called when an entity is hurt with a tool/armour equipped with a level greater than 0.
+	 * This method is called when the victim has the armour equipped.
+	 *
+	 * @param event the entity damage by entity event.
+	 * @param level the level of the enchantment for the entity in the event.
+	 */
+	public void onEntityDamageByEntityVictim(EntityDamageByEntityEvent event, int level) {}
 
 }

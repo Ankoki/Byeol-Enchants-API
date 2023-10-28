@@ -2,6 +2,8 @@ package com.ankoki.byeolenchants.api.enchants;
 
 import com.ankoki.byeolenchants.impl.EnchantBase;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 
 /**
  * Class to extend to create a custom enchantment.

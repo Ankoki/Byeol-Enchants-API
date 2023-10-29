@@ -1,6 +1,7 @@
 package com.ankoki.byeolenchants.impl;
 
 import com.ankoki.byeolenchants.ByeolEnchants;
+import com.ankoki.byeolenchants.api.enchants.EnchantPriority;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -17,17 +18,10 @@ public abstract class EnchantBase {
 	 *
 	 * @param name    the name of the enchant.
 	 * @param version the version.
-	 */
-	public EnchantBase(String name, String version) {}
-
-	/**
-	 * Creates a new custom enchant with the given name and version.
-	 *
-	 * @param name    the name of the enchant.
-	 * @param version the version.
 	 * @param config  whether to create the config ourselves or not. If this is true you must call <code>super.reloadConfig();</code> after.
+	 * @param priority the priority of this enchant. Defaults to {@link EnchantPriority#LOW}.
 	 */
-	public EnchantBase(String name, String version, boolean config) {}
+	public EnchantBase(String name, String version, boolean config, EnchantPriority priority) {}
 
 	/**
 	 * Gets the name of this enchant.
@@ -44,6 +38,15 @@ public abstract class EnchantBase {
 	 * @return the version.
 	 */
 	public String getVersion() {
+		return null;
+	}
+
+	/**
+	 * Gets the priority of this enchant.
+	 *
+	 * @return the priority.
+	 */
+	public EnchantPriority getPriority() {
 		return null;
 	}
 

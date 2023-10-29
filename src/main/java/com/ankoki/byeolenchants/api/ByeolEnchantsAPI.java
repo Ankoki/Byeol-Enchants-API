@@ -40,13 +40,6 @@ public abstract class ByeolEnchantsAPI {
 	public abstract ItemStack withdraw(Player player, double amount);
 
 	/**
-	 * Gets all the registered enchants.
-	 *
-	 * @return the enchants.
-	 */
-	public abstract CustomEnchant[] getRegisteredEnchants();
-
-	/**
 	 * Registers your custom enchant with Byeol-Enchants.
 	 * This must be done every startup.
 	 *
@@ -70,6 +63,13 @@ public abstract class ByeolEnchantsAPI {
 	 * @return the registered enchants.
 	 */
 	public abstract CustomEnchant[] getEnchants();
+
+	/**
+	 * Gets all registered enchants with the given priority.
+	 *
+	 * @return the registered enchants.
+	 */
+	public abstract CustomEnchant[] getEnchants(EnchantPriority priority);
 
 	/**
 	 * Combines the enchants of two items.

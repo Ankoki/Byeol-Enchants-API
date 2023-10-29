@@ -17,7 +17,7 @@ public abstract class CustomEnchant extends EnchantBase {
 	 * @param version the version.
 	 */
 	public CustomEnchant(String name, String version) {
-		super(name, version, true);
+		this(name, version, true);
 	}
 
 	/**
@@ -28,7 +28,7 @@ public abstract class CustomEnchant extends EnchantBase {
 	 * @param config  whether to create the config ourselves or not.
 	 */
 	public CustomEnchant(String name, String version, boolean config) {
-		super(name, version, config);
+		super(name, version, config, EnchantPriority.LOW);
 	}
 
 	/**

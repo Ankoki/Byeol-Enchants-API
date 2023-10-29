@@ -2,6 +2,7 @@ package com.ankoki.byeolenchants.api;
 
 import com.ankoki.byeolenchants.api.enchants.CustomEnchant;
 import com.ankoki.byeolenchants.api.currency.CurrencyHandler;
+import com.ankoki.byeolenchants.api.enchants.EnchantPriority;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;

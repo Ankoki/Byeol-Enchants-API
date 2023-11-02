@@ -38,7 +38,7 @@ public abstract class ByeolEnchantsAPI {
 	 * @return the item, or null if the player doesn't have enough currency.
 	 */
 	@Nullable
-	public abstract ItemStack withdraw(Player player, double amount);
+	public abstract ItemStack withdraw(Player player, float amount);
 
 	/**
 	 * Registers your custom enchant with Byeol-Enchants.

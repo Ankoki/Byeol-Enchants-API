@@ -39,8 +39,8 @@ public abstract class CustomEnchant extends EnchantBase {
 	 * @param level the new level.
 	 * @return the cost.
 	 */
-	public double getCost(int level) {
-		return this.getStartingCost() * (Math.pow(1.1, level));
+	public float getCost(int level) {
+		return (float) this.getStartingCost() * (Math.pow(1.1, level));
 	}
 
 	/**

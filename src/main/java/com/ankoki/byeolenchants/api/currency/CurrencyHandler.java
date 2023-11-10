@@ -33,6 +33,25 @@ public class CurrencyHandler {
 	public void setCurrency(OfflinePlayer player, double amount) {}
 
 	/**
+	 * Sets the currency of the player.
+	 *
+	 * @param player the player to set it for.
+	 * @param amount the amount.
+	 * @param log whether to log this transaction in console.
+	 */
+	public void setCurrency(OfflinePlayer player, double amount, boolean log) {}
+
+	/**
+	 * Sets the currency of the player.
+	 *
+	 * @param player the player to set it for.
+	 * @param amount the amount.
+	 * @param log whether to log this transaction in console.
+	 * @param executor the player who changed this, or null if console.
+	 */
+	public void setCurrency(OfflinePlayer player, double amount, boolean log, @Nullable Player executor) {}
+
+	/**
 	 * Adds to the currency of the player.
 	 *
 	 * @param player the player to add to.
@@ -41,12 +60,50 @@ public class CurrencyHandler {
 	public void addCurrency(OfflinePlayer player, double amount) {}
 
 	/**
+	 * Adds to the currency of the player.
+	 *
+	 * @param player the player to add to.
+	 * @param amount the amount to add.
+	 * @param log whether to log this transaction in console.
+	 */
+	public void addCurrency(OfflinePlayer player, double amount, boolean log) {}
+
+	/**
+	 * Adds to the currency of the player.
+	 *
+	 * @param player the player to add to.
+	 * @param amount the amount to add.
+	 * @param log whether to log this transaction in console.
+	 * @param executor the player who changed this, or null if console.
+	 */
+	public void addCurrency(OfflinePlayer player, double amount, boolean log, @Nullable Player executor) {}
+
+	/**
 	 * Removes from the currency of the player.
 	 *
 	 * @param player the player to remove from.
 	 * @param amount the amount to remove.
 	 */
 	public void removeCurrency(OfflinePlayer player, double amount) {}
+
+	/**
+	 * Removes from the currency of the player.
+	 *
+	 * @param player the player to remove from.
+	 * @param amount the amount to remove.
+	 * @param log whether to log this transaction in console.
+	 */
+	public void removeCurrency(OfflinePlayer player, double amount, boolean log) {}
+
+	/**
+	 * Removes from the currency of the player.
+	 *
+	 * @param player the player to remove from.
+	 * @param amount the amount to remove.
+	 * @param log whether to log this transaction in console.
+	 * @param executor the player who changed this, or null if console.
+	 */
+	public void removeCurrency(OfflinePlayer player, double amount, boolean log, @Nullable Player executor) {}
 
 	/**
 	 * Gets a configuration file from a player.

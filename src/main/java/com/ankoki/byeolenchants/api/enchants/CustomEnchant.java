@@ -57,7 +57,7 @@ public abstract class CustomEnchant extends EnchantBase {
 	 * @param event the entity damage event.
 	 * @param level the level of the enchantment for the entity in the event.
 	 */
-	public void onEntityDamage(EntityDamageEvent event, int level) {}
+	public void onTakingDamage(EntityDamageEvent event, int level) {}
 
 	/**
 	 * Called when an entity is hurt with a tool/armour equipped with a level greater than 0.
@@ -66,7 +66,7 @@ public abstract class CustomEnchant extends EnchantBase {
 	 * @param event the entity damage by entity event.
 	 * @param level the level of the enchantment for the entity in the event.
 	 */
-	public void onEntityDamageByEntityAttacker(EntityDamageByEntityEvent event, int level) {}
+	public void onDealingEntityDamage(EntityDamageByEntityEvent event, int level) {}
 
 	/**
 	 * Called when an entity is hurt with a tool/armour equipped with a level greater than 0.
@@ -75,6 +75,6 @@ public abstract class CustomEnchant extends EnchantBase {
 	 * @param event the entity damage by entity event.
 	 * @param level the level of the enchantment for the entity in the event.
 	 */
-	public void onEntityDamageByEntityVictim(EntityDamageByEntityEvent event, int level) {}
+	public void onTakingEntityDamage(EntityDamageByEntityEvent event, int level) {}
 
 }
